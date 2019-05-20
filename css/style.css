@@ -3,10 +3,13 @@
     padding: 0;
 }
 
-.body{
+.html{
     background-color: #222;
-    color: #fff;
     font-family: "Gill Sans", sans-serif;
+}
+
+.body{
+    color: #fff;
 }
 
 .bigtitle{
@@ -30,3 +33,4 @@
    resize: none; 
    border-radius: 10px;
 }
+
