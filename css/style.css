@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.body{
+    background-color: #222;
+    color: #fff;
+    font-family: "Gill Sans", sans-serif;
+}
+
+.bigtitle{
+    font-size: 3em;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.chatbox{
+    background-color: #bbb;
+    color: #000;
+    margin: 2em 5em 0 5em;
+}
+
+.message{
+   resize: none; 
+   border-radius: 10px;
+}
