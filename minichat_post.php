@@ -1,11 +1,6 @@
 <?php
-// Effectuer ici la requête qui insère le message
-// Puis rediriger vers minichat.php comme ceci :
-header('Location: minichat.php');
-?>
 
-<?php
-
+// Test de connexion à la base de données
 try
 {
 	$bdd = new PDO('mysql:host=localhost;dbname=mini_chat;charset=utf8', 'root', '');
@@ -15,9 +10,11 @@ catch(Exception $e)
         die('Erreur : '.$e->getMessage());
 }
 
+// Création des variables
 $pseudo = $_POST['pseudo'];
 $message = $_POST['message'];
 
+// Insertion du message à l'aide d'une requête préparée
 $req = $bdd->prepare('INSERT INTO minichat(pseudo, message) VALUES(:pseudo, :message)');
 
 $req->execute(array(
@@ -25,5 +22,7 @@ $req->execute(array(
     'message' => $message
     ));
 
+// Redirige vers l'index
+header('Location: minichat.php');
 
 ?>
