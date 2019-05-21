@@ -4,7 +4,7 @@
 }
 
 .html{
-    background-color: #222;
+    background-color: #111;
     font-family: "Gill Sans", sans-serif;
 }
 
@@ -34,3 +34,10 @@
    border-radius: 10px;
 }
 
+.margintop{
+    margin-top: 1em;
+}
+
+.is-black{
+    color: black;
+}
