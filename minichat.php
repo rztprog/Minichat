@@ -34,7 +34,7 @@ catch(Exception $e)
             </span>
         </p>
         <p>
-        <p><textarea class="message textarea is-primary is-medium margintop" name="message" rows="10" cols="40" required maxlength="255" placeholder="Your message"></textarea></p>
+        <p><textarea class="message textarea is-primary is-medium margintop" name="message" rows="2" cols="40" required maxlength="255" placeholder="Your message"></textarea></p>
         <p class="margintop"><input class="button is-success" type="submit" value="Send" />
         <input class="button is-success" type="reset" value="Reset" />
         <button class="button is-success" value="ntm"><a class="is-black" href="minichat.php">Refresh</a></button>
