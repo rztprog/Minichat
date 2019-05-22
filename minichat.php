@@ -37,7 +37,7 @@ catch(Exception $e)
         }
         else
         {?>
-        <input type="text" name="pseudo" class="input is-medium is-primary" placeholder="Your nickname" value="<?= $_COOKIE['pseudo'] ?>" required />
+        <input type="text" name="pseudo" class="input is-medium is-primary" value="<?= $_COOKIE['pseudo'] ?>" required />
         <?php 
         } 
         ?>
@@ -48,18 +48,20 @@ catch(Exception $e)
         <button class="button is-success is-medium" value="ntm"><a class="is-black" href="minichat.php">Refresh</a></button>
         <!-- <button class="button is-success">Clear</button> -->
         </p>
+        <input type="hidden" name="time" value="<?= date("d-m à H:i",time()) ?>" />
     </form>
     </div>
     <div class="chatbox">
 <?php
 
-$response = $bdd->query('SELECT pseudo, message FROM minichat ORDER BY id DESC LIMIT 10');
+$response = $bdd->query('SELECT pseudo, message, time FROM minichat ORDER BY id DESC LIMIT 10');
 
 while ($data = $response->fetch())
 {
 ?>
     <p>
-    <strong><?php echo htmlspecialchars($data['pseudo']); ?></strong>
+    <b class="time"><?php echo htmlspecialchars($data['time']); ?></b>
+    | <strong><?php echo htmlspecialchars($data['pseudo']); ?></strong>
     : <?php echo htmlspecialchars($data['message']); ?>
     </p>
 

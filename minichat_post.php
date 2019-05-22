@@ -12,17 +12,20 @@ catch(Exception $e)
 
 // Création des variables
 $message = $_POST['message'];
+$pseudo = $_POST['pseudo'];
+$time = $_POST['time'];
 $ip = $_SERVER['REMOTE_ADDR'];
-$jour = 7; // Nombre de jour avant suppression du cookie
+// $jour = 7; // Nombre de jour avant suppression du cookie
 
 // Si le cookie n'existe pas crée le pour les fois suivantes
-if(!isset($_COOKIE['pseudo']) || $_POST['pseudo'] !== $_COOKIE['pseudo'])
+if(!isset($_COOKIE['pseudo']) || $_POST['pseudo'] != $_COOKIE['pseudo'])
 {
-    setcookie('pseudo', $_POST['pseudo'], time() + $jour*24*3600, null, null, false, true);
+    setcookie('pseudo', $_POST['pseudo'], time() + 24*3600, null, null, false, true);
+    // $jour*24*3600
 }
 
 // Insertion du message à l'aide d'une requête préparée
-$req = $bdd->prepare('INSERT INTO minichat(pseudo, message, ip) VALUES(:pseudo, :message, :ip)');
+$req = $bdd->prepare('INSERT INTO minichat(pseudo, message, ip, time) VALUES(:pseudo, :message, :ip, :time)');
 
 // Si le cookie n'existe pas au premier lancement execute avec le post
 if(isset($_COOKIE['pseudo']))
@@ -30,15 +33,17 @@ if(isset($_COOKIE['pseudo']))
 $req->execute(array(
     'pseudo' => $_COOKIE['pseudo'],
     'message' => $message,
-    'ip' => $ip
+    'ip' => $ip,
+    'time' => $time,
     ));
 }
 else
 {
 $req->execute(array(
-    'pseudo' => $_POST['pseudo'],
+    'pseudo' => $pseudo,
     'message' => $message,
-    'ip' => $ip
+    'ip' => $ip,
+    'time' => $time,
     ));
 }
 
