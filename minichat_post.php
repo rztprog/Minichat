@@ -20,7 +20,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
 // Si le cookie n'existe pas crée le pour les fois suivantes
 if(!isset($_COOKIE['pseudo']) || $_POST['pseudo'] != $_COOKIE['pseudo'])
 {
-    setcookie('pseudo', $_POST['pseudo'], time() + 24*3600, null, null, false, true);
+    setcookie('pseudo', $_POST['pseudo'], time() + 2*3600, null, null, false, true);
     // $jour*24*3600
 }
 
